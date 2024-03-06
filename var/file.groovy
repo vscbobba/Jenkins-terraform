@@ -1,3 +1,3 @@
-def sayHello() {
+def call() {
     echo 'Hello from YourLibrary!'
 }
