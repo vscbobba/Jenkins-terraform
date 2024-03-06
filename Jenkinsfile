@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('test'){
             steps{
-                echo "mytime"
+                echo "mytime for testing"
             }
         }
         stage('pre-prod'){
