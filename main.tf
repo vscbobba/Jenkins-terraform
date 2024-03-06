@@ -64,7 +64,6 @@ resource "aws_key_pair" "project_key" {
 }
 
 resource "aws_instance" "lab_Jenkins" {
-         count = var.create_instance1 ? 1 : 0
          ami = var.ami[0]
          instance_type = var.instance_type[2]
          key_name = aws_key_pair.project_key.id
@@ -79,8 +78,7 @@ resource "aws_instance" "lab_Jenkins" {
          }
 }
 
-resource "aws_instance" "lab_ansible_manger" {
-         count = var.create_instance2 ? 1 : 0
+#resource "aws_instance" "lab_ansible_manger" {
          ami = var.ami[1]
          instance_type = var.instance_type[0]
          key_name = aws_key_pair.project_key.id
@@ -101,8 +99,7 @@ resource "aws_instance" "lab_ansible_manger" {
           host  = self.public_ip
         }
 }        
-resource "aws_instance" "lab_ansible_node1" {
-         count = var.create_instance3 ? 1 : 0
+#resource "aws_instance" "lab_ansible_node1" {
          ami = var.ami[1]
          instance_type = var.instance_type[0]
          key_name = aws_key_pair.project_key.id
@@ -113,8 +110,7 @@ resource "aws_instance" "lab_ansible_node1" {
           Name = "tomcat"
          }
 }
-resource "aws_instance" "lab_ansible_node2" {
-         count = var.create_instance3 ? 1 : 0
+#resource "aws_instance" "lab_ansible_node2" {
          ami = var.ami[0]
          instance_type = var.instance_type[0]
          key_name = aws_key_pair.project_key.id
