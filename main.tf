@@ -78,48 +78,48 @@ resource "aws_instance" "lab_Jenkins" {
          }
 }
 
-#resource "aws_instance" "lab_ansible_manger" {
-         ami = var.ami[1]
-         instance_type = var.instance_type[0]
-         key_name = aws_key_pair.project_key.id
-         subnet_id = aws_subnet.lab_subnet.id
-         vpc_security_group_ids = [aws_security_group.lab_sg.id]
-         user_data = file("userdata_ansible.tpl")
-         tags = {
-          Name = "lab-ansible-manger"
-         }
-         provisioner "file" {
-          source      = "/home/venkat/DEVOPS/Project-2/Ansible"
-          destination = "/tmp"
-        }
-         connection {
-          type        = "ssh"
-          user        = "ec2-user"             # Replace with your SSH user
-          private_key = file("~/.ssh/id_ed25519")  # Replace with your private key path
-          host  = self.public_ip
-        }
-}        
-#resource "aws_instance" "lab_ansible_node1" {
-         ami = var.ami[1]
-         instance_type = var.instance_type[0]
-         key_name = aws_key_pair.project_key.id
-         subnet_id = aws_subnet.lab_subnet.id
-         vpc_security_group_ids = [aws_security_group.lab_sg.id]
-         user_data = file("userdata_ansmanged.tpl")
-         tags = {
-          Name = "tomcat"
-         }
-}
-#resource "aws_instance" "lab_ansible_node2" {
-         ami = var.ami[0]
-         instance_type = var.instance_type[0]
-         key_name = aws_key_pair.project_key.id
-         subnet_id = aws_subnet.lab_subnet.id
-         vpc_security_group_ids = [aws_security_group.lab_sg.id]
-         user_data = file("userdata_docker.tpl")
-         tags = {
-          Name = "docker"
-         }
-}
+# resource "aws_instance" "lab_ansible_manger" {
+#          ami = var.ami[1]
+#          instance_type = var.instance_type[0]
+#          key_name = aws_key_pair.project_key.id
+#          subnet_id = aws_subnet.lab_subnet.id
+#          vpc_security_group_ids = [aws_security_group.lab_sg.id]
+#          user_data = file("userdata_ansible.tpl")
+#          tags = {
+#           Name = "lab-ansible-manger"
+#          }
+#          provisioner "file" {
+#           source      = "/home/venkat/DEVOPS/Project-2/Ansible"
+#           destination = "/tmp"
+#         }
+#          connection {
+#           type        = "ssh"
+#           user        = "ec2-user"             # Replace with your SSH user
+#           private_key = file("~/.ssh/id_ed25519")  # Replace with your private key path
+#           host  = self.public_ip
+#         }
+# }        
+# resource "aws_instance" "lab_ansible_node1" {
+#          ami = var.ami[1]
+#          instance_type = var.instance_type[0]
+#          key_name = aws_key_pair.project_key.id
+#          subnet_id = aws_subnet.lab_subnet.id
+#          vpc_security_group_ids = [aws_security_group.lab_sg.id]
+#          user_data = file("userdata_ansmanged.tpl")
+#          tags = {
+#           Name = "tomcat"
+#          }
+# }
+# resource "aws_instance" "lab_ansible_node2" {
+#          ami = var.ami[0]
+#          instance_type = var.instance_type[0]
+#          key_name = aws_key_pair.project_key.id
+#          subnet_id = aws_subnet.lab_subnet.id
+#          vpc_security_group_ids = [aws_security_group.lab_sg.id]
+#          user_data = file("userdata_docker.tpl")
+#          tags = {
+#           Name = "docker"
+#          }
+# }
 
 #terraform import aws_key_pair.project_key project-key#
