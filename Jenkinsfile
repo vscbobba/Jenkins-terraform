@@ -1,3 +1,4 @@
+@library('mylibrary') _
 pipeline {
     agent any
     stages{
