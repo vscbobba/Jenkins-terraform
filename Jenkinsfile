@@ -4,7 +4,7 @@ pipeline {
     stages{
         stage('test'){
             steps{
-                echo "mytime for testing"
+                fileFunc()
             }
         }
         stage('pre-prod'){
