@@ -58,15 +58,10 @@ resource "aws_security_group" "lab_sg" {
           }
 }
 
-resource "aws_key_pair" "project_key" {
-    key_name = "project-key"
-    public_key = file("~/.ssh/id_ed25519.pub")
-}
-
 resource "aws_instance" "lab_Jenkins" {
          ami = var.ami[0]
          instance_type = var.instance_type[2]
-         key_name = aws_key_pair.project_key.id
+         key_name = "lappy.pem"
          subnet_id = aws_subnet.lab_subnet.id
          vpc_security_group_ids = [aws_security_group.lab_sg.id]
          root_block_device {
