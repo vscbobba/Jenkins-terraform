@@ -63,6 +63,7 @@ resource "aws_instance" "lab_Jenkins" {
          instance_type = var.instance_type[1]
          key_name = "lappy"
          subnet_id = aws_subnet.lab_subnet.id
+         iam_instance_profile = "arn:aws:iam::631231558475:instance-profile/EC2-full"
          vpc_security_group_ids = [aws_security_group.lab_sg.id]
          root_block_device {
             volume_size = 15
