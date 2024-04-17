@@ -24,7 +24,3 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 apt-cache policy docker-ce
 sudo apt install docker-ce -y
 sudo chmod 777 /var/run/docker.sock
-sudo docker run -d --name mysonar -p 9000:9000 -p 9092:9092 sonarqube
-docker update --restart always mysonar
-docker run -d -p 8081:8081 --name nexus sonatype/nexus3
-docker update --restart always nexus
