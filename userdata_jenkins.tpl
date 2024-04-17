@@ -16,6 +16,12 @@ echo 'ClientAliveInterval 60' | sudo tee --append /etc/ssh/sshd_config
 sudo sed -i 's/^StrictHostKeyChecking.*/StrictHostKeyChecking no/' /etc/ssh/ssh_config
 sudo service ssh restart
 sudo apt install awscli -y
+sudo rm -rf /var/lib/jenkins/
+sudo aws s3 cp s3://project2024-s3bucketz/jenkins_backup.tar.gz jenkins_backup.tar.gz
+sudo tar -xvzf jenkins_backup.tar.gz
+cd var/lib/jenkins
+sudo mv * /var/lib/jenkins/
+sudo systemctl restart jenkins
 
 sudo apt-get remove docker docker-engine docker.io containerd runc
 sudo apt update -y
