@@ -61,7 +61,7 @@ resource "aws_security_group" "lab_sg" {
 resource "aws_instance" "lab_Jenkins" {
          ami = var.ami[0]
          instance_type = var.instance_type[2]
-         key_name = "lappy.pem"
+         key_name = "lappy"
          subnet_id = aws_subnet.lab_subnet.id
          vpc_security_group_ids = [aws_security_group.lab_sg.id]
          root_block_device {
