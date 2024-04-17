@@ -36,9 +36,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          terraform init
-          terraform plan
-          terraform apply -auto-approve
+      - name: Apply Terraform
+        if: ${{ github.event_name == 'push' }}
+        run: terraform apply -auto-approve
+
+      - name: Destroy Terraform
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: terraform destroy -auto-approve
