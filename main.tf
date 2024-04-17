@@ -60,7 +60,7 @@ resource "aws_security_group" "lab_sg" {
 
 resource "aws_instance" "lab_Jenkins" {
          ami = var.ami[0]
-         instance_type = var.instance_type[1]
+         instance_type = var.instance_type[2]
          key_name = "lappy"
          subnet_id = aws_subnet.lab_subnet.id
          iam_instance_profile = "arn:aws:iam::631231558475:instance-profile/EC2-full"
