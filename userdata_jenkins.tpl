@@ -15,6 +15,7 @@ apt-get install jenkins -y
 echo 'ClientAliveInterval 60' | sudo tee --append /etc/ssh/sshd_config
 sudo sed -i 's/^StrictHostKeyChecking.*/StrictHostKeyChecking no/' /etc/ssh/ssh_config
 sudo service ssh restart
+sudo apt install awscli -y
 
 sudo apt-get remove docker docker-engine docker.io containerd runc
 sudo apt update -y
