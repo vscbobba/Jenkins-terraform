@@ -9,8 +9,10 @@ pipeline {
         }
         stage('pre-prod'){
             steps{
-                echo "its preprod"
-            }
+                dir(".github"){
+                 sh  'ls -ltr'
+                }
+            }   
         }    
         stage('prod'){
             steps{
